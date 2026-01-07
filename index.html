@@ -853,8 +853,17 @@
         }
 
         .hotspot:hover .hotspot-dot {
-            transform: scale(1.2);
+            transform: scale(1.4);
         }
+
+        .hotspot:hover .hotspot-label {
+            transform: translateX(-50%) scale(1.1);
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .hotspot.low:hover .hotspot-dot { box-shadow: 0 0 25px #00ff88, 0 0 40px rgba(0,255,136,0.5); }
+        .hotspot.elevated:hover .hotspot-dot { box-shadow: 0 0 25px #ffcc00, 0 0 40px rgba(255,204,0,0.5); }
+        .hotspot.high:hover .hotspot-dot { box-shadow: 0 0 30px #ff3333, 0 0 50px rgba(255,51,51,0.6); }
 
         /* Shipping Chokepoints */
         .chokepoint {
@@ -865,8 +874,41 @@
             cursor: pointer;
         }
 
+        .chokepoint::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 28px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .chokepoint:hover::before {
+            border-color: #00aaff;
+            animation: chokepoint-scan 1.5s ease-in-out infinite;
+        }
+
+        @keyframes chokepoint-scan {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
         .chokepoint:hover .chokepoint-icon {
-            transform: scale(1.2);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(0,170,255,0.8);
+        }
+
+        .chokepoint:hover .chokepoint-label {
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0,255,255,0.6);
+        }
+
+        .chokepoint.alert:hover .chokepoint-icon {
+            box-shadow: 0 0 20px rgba(255,170,0,1);
         }
 
         .chokepoint-icon {
@@ -875,6 +917,7 @@
             background: #0066cc;
             border: 2px solid #00aaff;
             border-radius: 2px;
+            transition: all 0.2s ease;
             position: relative;
             box-shadow: 0 0 8px rgba(0,170,255,0.5);
         }
@@ -1053,8 +1096,38 @@
             cursor: pointer;
         }
 
+        .quake::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .quake:hover::before {
+            border-color: #ff6600;
+            animation: quake-ring 0.5s ease-out infinite;
+        }
+
+        @keyframes quake-ring {
+            0% { width: 20px; height: 20px; opacity: 1; }
+            100% { width: 40px; height: 40px; opacity: 0; }
+        }
+
         .quake:hover .quake-icon {
-            filter: brightness(1.3);
+            filter: brightness(1.5);
+            transform: scale(1.3);
+        }
+
+        .quake:hover .quake-label {
+            color: #ff9944;
+            text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+            transform: translateX(-50%) scale(1.1);
         }
 
         .quake-icon {
@@ -1063,6 +1136,7 @@
             background: radial-gradient(circle, #ff6600 0%, #ff3300 100%);
             border-radius: 50%;
             animation: quake-pulse 1s ease-out infinite;
+            transition: transform 0.2s, filter 0.2s;
         }
 
         .quake.major .quake-icon {
@@ -1070,6 +1144,10 @@
             height: 18px;
             background: radial-gradient(circle, #ff0000 0%, #cc0000 100%);
             animation: quake-pulse-major 0.8s ease-out infinite;
+        }
+
+        .quake.major:hover .quake-icon {
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
         }
 
         @keyframes quake-pulse {
@@ -1090,6 +1168,7 @@
             font-size: 0.45rem;
             color: #ff6600;
             white-space: nowrap;
+            transition: all 0.2s ease;
         }
 
         /* Earthquake Popup */
@@ -1210,9 +1289,42 @@
             cursor: pointer;
         }
 
+        .cyber-zone::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-zone:hover::before {
+            border-color: #ff00ff;
+            background: radial-gradient(circle, rgba(255,0,255,0.1) 0%, transparent 70%);
+            animation: cyber-expand 1.5s ease-out infinite;
+        }
+
+        @keyframes cyber-expand {
+            0% { width: 25px; height: 25px; opacity: 1; }
+            100% { width: 50px; height: 50px; opacity: 0; }
+        }
+
         .cyber-zone:hover .cyber-icon {
             opacity: 1;
-            box-shadow: 0 0 20px rgba(255,0,255,0.6);
+            box-shadow: 0 0 25px rgba(255,0,255,0.9);
+            transform: scale(1.2);
+            animation: cyber-scan 1s linear infinite;
+        }
+
+        .cyber-zone:hover .cyber-label {
+            opacity: 1;
+            color: #ff66ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+            transform: translateX(-50%) scale(1.1);
         }
 
         .cyber-icon {
@@ -1222,6 +1334,7 @@
             border-radius: 50%;
             opacity: 0.4;
             animation: cyber-scan 3s linear infinite;
+            transition: all 0.3s ease;
         }
 
         .cyber-zone.active .cyber-icon {
@@ -1229,6 +1342,10 @@
             border-color: #ff00ff;
             box-shadow: 0 0 15px rgba(255,0,255,0.4);
             animation: cyber-active 1s ease-in-out infinite;
+        }
+
+        .cyber-zone.active:hover .cyber-icon {
+            box-shadow: 0 0 30px rgba(255,0,255,1);
         }
 
         @keyframes cyber-scan {
@@ -1243,12 +1360,13 @@
 
         .cyber-label {
             position: absolute;
-            top: 14px;
+            top: 16px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.4rem;
+            font-size: 0.45rem;
             color: #ff00ff;
             opacity: 0.6;
+            transition: all 0.2s ease;
         }
 
         /* Cyber Popup */
@@ -1937,9 +2055,18 @@
             background: rgba(0, 0, 0, 0.7);
             padding: 0.15rem 0.4rem;
             border: 1px solid #ff3333;
-            pointer-events: none;
+            pointer-events: auto;
+            cursor: pointer;
             white-space: nowrap;
             animation: blink 2s ease-in-out infinite;
+            transition: all 0.2s ease;
+        }
+
+        .conflict-zone-label:hover {
+            background: rgba(255, 51, 51, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+            animation: none;
         }
 
         @keyframes conflict-march {
@@ -1955,15 +2082,42 @@
             cursor: pointer;
         }
 
+        .military-base::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .military-base:hover::before {
+            border-color: currentColor;
+            animation: base-ping 1s ease-out infinite;
+        }
+
         .military-base:hover .base-icon {
-            transform: scale(1.3);
+            transform: scale(1.5);
+        }
+
+        .military-base.us-nato:hover::before { border-color: #4488ff; }
+        .military-base.china:hover::before { border-color: #ff4444; }
+        .military-base.russia:hover::before { border-color: #ff8800; }
+
+        @keyframes base-ping {
+            0% { width: 20px; height: 20px; opacity: 1; }
+            100% { width: 35px; height: 35px; opacity: 0; }
         }
 
         .base-icon {
             width: 8px;
             height: 8px;
             border-radius: 1px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .base-icon.us-nato {
@@ -1984,24 +2138,40 @@
             box-shadow: 0 0 6px rgba(255, 136, 0, 0.5);
         }
 
+        .military-base:hover .base-icon.us-nato {
+            box-shadow: 0 0 15px rgba(68, 136, 255, 0.9);
+        }
+
+        .military-base:hover .base-icon.china {
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.9);
+        }
+
+        .military-base:hover .base-icon.russia {
+            box-shadow: 0 0 15px rgba(255, 136, 0, 0.9);
+        }
+
         .base-label {
             position: absolute;
-            top: 10px;
+            top: 12px;
             left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
+            transform: translateX(-50%) translateY(5px);
+            font-size: 0.45rem;
             white-space: nowrap;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: all 0.2s ease;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.15rem 0.4rem;
+            border-radius: 2px;
         }
 
         .military-base:hover .base-label {
             opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
-        .base-label.us-nato { color: #4488ff; }
-        .base-label.china { color: #ff4444; }
-        .base-label.russia { color: #ff8800; }
+        .base-label.us-nato { color: #4488ff; border: 1px solid #4488ff; }
+        .base-label.china { color: #ff4444; border: 1px solid #ff4444; }
+        .base-label.russia { color: #ff8800; border: 1px solid #ff8800; }
 
         /* Nuclear Facility Markers */
         .nuclear-facility {
@@ -2012,9 +2182,36 @@
             cursor: pointer;
         }
 
+        .nuclear-facility::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px dashed transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nuclear-facility:hover::before {
+            border-color: #ffcc00;
+            animation: nuclear-rotate 3s linear infinite;
+        }
+
         .nuclear-facility:hover .nuclear-icon {
-            transform: scale(1.3);
-            box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+            transform: scale(1.4);
+            box-shadow: 0 0 20px rgba(255, 255, 0, 1);
+        }
+
+        .nuclear-facility:hover .nuclear-icon.weapons {
+            box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+        }
+
+        @keyframes nuclear-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .nuclear-icon {
@@ -2052,18 +2249,23 @@
 
         .nuclear-label {
             position: absolute;
-            top: 14px;
+            top: 16px;
             left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.4rem;
+            transform: translateX(-50%) translateY(5px);
+            font-size: 0.45rem;
             color: #ffcc00;
             white-space: nowrap;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: all 0.2s ease;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 0.15rem 0.4rem;
+            border: 1px solid #ffcc00;
+            border-radius: 2px;
         }
 
         .nuclear-facility:hover .nuclear-label {
             opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         /* Undersea Cables */
@@ -2073,17 +2275,30 @@
             stroke-width: 1.5;
             stroke-opacity: 0.4;
             stroke-linecap: round;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .cable-path:hover {
-            stroke-opacity: 0.9;
-            stroke-width: 2.5;
-            filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.6));
+            stroke-opacity: 1;
+            stroke-width: 3;
+            stroke: #00ffff;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
+            stroke-dasharray: 8, 4;
+            animation: cable-flow 0.5s linear infinite;
+        }
+
+        @keyframes cable-flow {
+            to { stroke-dashoffset: -12; }
         }
 
         .cable-path.major {
             stroke-width: 2;
             stroke-opacity: 0.6;
+        }
+
+        .cable-path.major:hover {
+            stroke-width: 4;
         }
 
         .cable-endpoint {
@@ -2188,6 +2403,11 @@
             color: #0a8060;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            transition: color 0.2s;
+        }
+
+        .flashback-control:hover .flashback-label {
+            color: #00ff88;
         }
 
         .flashback-slider {
@@ -2198,25 +2418,45 @@
             background: #0a3020;
             border-radius: 2px;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .flashback-slider:hover {
+            background: #0f5040;
+            height: 6px;
         }
 
         .flashback-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: #00ff88;
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+            transition: all 0.2s;
+        }
+
+        .flashback-slider:hover::-webkit-slider-thumb {
+            width: 18px;
+            height: 18px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.9);
         }
 
         .flashback-slider::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: #00ff88;
             border-radius: 50%;
             cursor: pointer;
             border: none;
+            transition: all 0.2s;
+        }
+
+        .flashback-slider:hover::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.9);
         }
 
         .flashback-time {
@@ -2224,6 +2464,11 @@
             color: #00ff88;
             font-family: 'SF Mono', monospace;
             min-width: 60px;
+            transition: all 0.2s;
+        }
+
+        .flashback-control:hover .flashback-time {
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
         }
 
         .flashback-mode-indicator {
@@ -2251,9 +2496,11 @@
         .density-blob {
             position: absolute;
             border-radius: 50%;
-            pointer-events: none;
+            pointer-events: auto;
             z-index: 12;
             mix-blend-mode: screen;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .density-blob.low {
@@ -2269,6 +2516,23 @@
             animation: density-glow 2s ease-in-out infinite;
         }
 
+        .density-blob:hover {
+            transform: translate(-50%, -50%) scale(1.3) !important;
+            filter: brightness(1.5);
+        }
+
+        .density-blob.low:hover {
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.5) 0%, transparent 70%);
+        }
+
+        .density-blob.medium:hover {
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.55) 0%, transparent 70%);
+        }
+
+        .density-blob.high:hover {
+            background: radial-gradient(circle, rgba(255, 68, 68, 0.6) 0%, transparent 70%);
+        }
+
         @keyframes density-glow {
             0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
             50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
@@ -2282,10 +2546,11 @@
             transform: translateX(-50%);
             display: flex;
             gap: 2px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 4px;
             border: 1px solid #0f5040;
             z-index: 50;
+            backdrop-filter: blur(4px);
         }
 
         .layer-btn {
@@ -2293,23 +2558,48 @@
             border: 1px solid #0a3020;
             color: #0a8060;
             font-size: 0.5rem;
-            padding: 0.25rem 0.5rem;
+            padding: 0.3rem 0.6rem;
             cursor: pointer;
             font-family: 'SF Mono', monospace;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .layer-btn:hover::before {
+            left: 100%;
         }
 
         .layer-btn:hover {
-            border-color: #0f5040;
+            border-color: #00ff88;
             color: #00ff88;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+            transform: translateY(-1px);
         }
 
         .layer-btn.active {
             background: #0f5040;
             color: #00ff88;
             border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1);
+        }
+
+        .layer-btn.active:hover {
+            background: #0a3020;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -3709,7 +3999,7 @@
                 MILITARY_BASES.forEach(base => {
                     const pos = toPercent(base.lon, base.lat);
                     overlaysHTML += `
-                        <div class="military-base" style="left: ${pos.x}%; top: ${pos.y}%;" title="${base.name}">
+                        <div class="military-base ${base.type}" style="left: ${pos.x}%; top: ${pos.y}%;" title="${base.name}">
                             <div class="base-icon ${base.type}"></div>
                             <div class="base-label ${base.type}">${base.name}</div>
                         </div>
