@@ -223,10 +223,22 @@
 
 		mapGroup = svg.append('g').attr('id', 'mapGroup');
 
-		// Setup zoom
+		// Setup zoom - disable scroll wheel, allow touch pinch and buttons
 		zoom = d3
 			.zoom<SVGSVGElement, unknown>()
 			.scaleExtent([1, 6])
+			.filter((event) => {
+				// Block scroll wheel zoom (wheel events)
+				if (event.type === 'wheel') return false;
+				// Allow touch events (pinch zoom on mobile)
+				if (event.type.startsWith('touch')) return true;
+				// Allow mouse drag for panning
+				if (event.type === 'mousedown' || event.type === 'mousemove') return true;
+				// Block double-click zoom
+				if (event.type === 'dblclick') return false;
+				// Allow other events (programmatic zoom from buttons)
+				return true;
+			})
 			.on('zoom', (event) => {
 				mapGroup.attr('transform', event.transform.toString());
 			});
