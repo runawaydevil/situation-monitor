@@ -1119,6 +1119,58 @@ export const SOURCE_TYPES = {
     mainstream: ['reuters', 'ap news', 'bbc', 'cnn', 'nytimes', 'wsj', 'wapo', 'guardian', 'abc', 'nbc', 'cbs', 'fox']
 };
 
+// Onboarding presets for first-time users
+export const PRESETS = {
+    'news-junkie': {
+        id: 'news-junkie',
+        name: 'News Junkie',
+        icon: '📰',
+        description: 'Stay on top of breaking news across politics, tech, and finance',
+        panels: ['politics', 'tech', 'finance', 'gov', 'ai', 'mainchar', 'map']
+    },
+    'trader': {
+        id: 'trader',
+        name: 'Trader',
+        icon: '📈',
+        description: 'Market-focused dashboard with stocks, crypto, and commodities',
+        panels: ['markets', 'heatmap', 'commodities', 'polymarket', 'whales', 'printer', 'finance', 'map']
+    },
+    'geopolitics': {
+        id: 'geopolitics',
+        name: 'Geopolitics Watcher',
+        icon: '🌍',
+        description: 'Global situation awareness and regional hotspots',
+        panels: ['map', 'intel', 'politics', 'gov', 'venezuela', 'greenland', 'correlation', 'narrative']
+    },
+    'intel': {
+        id: 'intel',
+        name: 'Intelligence Analyst',
+        icon: '🔍',
+        description: 'Deep analysis, pattern detection, and narrative tracking',
+        panels: ['map', 'intel', 'correlation', 'narrative', 'mainchar', 'politics']
+    },
+    'minimal': {
+        id: 'minimal',
+        name: 'Minimal',
+        icon: '⚡',
+        description: 'Just the essentials - map, news, and markets',
+        panels: ['map', 'politics', 'markets']
+    },
+    'everything': {
+        id: 'everything',
+        name: 'Everything',
+        icon: '🎛️',
+        description: 'Kitchen sink - all 21 panels enabled',
+        panels: Object.keys({
+            map: true, politics: true, tech: true, finance: true, gov: true,
+            heatmap: true, markets: true, monitors: true, commodities: true,
+            polymarket: true, whales: true, mainchar: true, printer: true,
+            contracts: true, ai: true, layoffs: true, venezuela: true,
+            greenland: true, intel: true, correlation: true, narrative: true
+        })
+    }
+};
+
 // AI RSS feeds for arms race tracking
 export const AI_FEEDS = [
     { name: 'OpenAI', url: 'https://openai.com/news/rss.xml' },

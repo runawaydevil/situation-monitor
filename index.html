@@ -50,6 +50,7 @@
                 <div class="settings-section-title">Layout</div>
                 <div class="settings-hint" style="margin-bottom: 0.5rem;">Drag panel headers to reorder</div>
                 <button class="settings-reset" onclick="resetPanelOrder()">Reset Layout</button>
+                <button class="settings-reset" onclick="resetOnboarding()" style="margin-top: 0.5rem;">Reconfigure Dashboard</button>
             </div>
             <div class="settings-section monitors-section">
                 <div class="settings-section-title">Custom Monitors</div>
@@ -90,6 +91,22 @@
             <div class="monitor-form-actions">
                 <button class="monitor-cancel-btn" onclick="closeMonitorForm()">Cancel</button>
                 <button class="monitor-save-btn" onclick="saveMonitor()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding Modal -->
+    <div class="onboarding-modal" id="onboardingModal">
+        <div class="onboarding-content">
+            <div class="onboarding-header">
+                <div class="onboarding-title">Welcome to Situation Monitor</div>
+                <div class="onboarding-subtitle">Choose a profile to get started</div>
+            </div>
+            <div class="preset-cards" id="presetCards">
+                <!-- Preset cards rendered by JS -->
+            </div>
+            <div class="onboarding-footer">
+                You can change this later in Settings
             </div>
         </div>
     </div>

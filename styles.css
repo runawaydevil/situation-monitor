@@ -4584,6 +4584,130 @@
             color: var(--text);
         }
 
+        /* Onboarding Modal */
+        .onboarding-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 10, 5, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .onboarding-modal.open {
+            display: flex;
+        }
+
+        .onboarding-content {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .onboarding-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .onboarding-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .onboarding-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .preset-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .preset-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .preset-card:hover {
+            border-color: var(--green);
+            background: rgba(0, 255, 136, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .preset-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .preset-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--green);
+        }
+
+        .preset-description {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .preset-panel-count {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            opacity: 0.7;
+        }
+
+        .onboarding-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 500px) {
+            .preset-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .onboarding-content {
+                padding: 1.5rem;
+                width: 100%;
+                height: 100vh;
+                max-height: 100vh;
+                border: none;
+            }
+
+            .preset-card {
+                padding: 1rem;
+            }
+
+            .preset-icon {
+                font-size: 1.5rem;
+            }
+        }
+
         /* Custom Hotspot (user-created) */
         .custom-hotspot {
             position: absolute;

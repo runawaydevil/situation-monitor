@@ -30,6 +30,7 @@ import {
     selectMonitorColor, saveMonitor, editMonitor, deleteMonitor,
     renderMonitorsPanel
 } from './monitors.js';
+import { initOnboarding, isFirstVisit } from './onboarding.js';
 
 // Expose functions to window for onclick handlers
 window.togglePanel = (id) => togglePanel(id, refreshAll);
@@ -253,8 +254,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize panels
     initPanels(renderMonitorsList);
 
-    // Initial data load
-    refreshAll();
+    // Initialize onboarding (shows modal on first visit)
+    initOnboarding(refreshAll);
+
+    // Only load data if not first visit (onboarding will trigger refreshAll after preset selection)
+    if (!isFirstVisit()) {
+        refreshAll();
+    }
 
     // Auto-refresh every hour (users can manually refresh anytime)
     setInterval(refreshAll, 60 * 60 * 1000);
