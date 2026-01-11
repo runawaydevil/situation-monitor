@@ -309,6 +309,25 @@
 				</div>
 			{/if}
 
+		{#if isPanelVisible('iran')}
+			<div class="panel-slot">
+				<SituationPanel
+					panelId="iran"
+					config={{
+						title: 'Iran Crisis',
+						subtitle: 'Revolution protests, regime instability & nuclear program',
+						criticalKeywords: ['protest', 'uprising', 'revolution', 'crackdown', 'killed', 'nuclear', 'strike', 'attack', 'irgc', 'khamenei']
+					}}
+					news={allNewsItems.filter(
+						(n) =>
+							n.title.toLowerCase().includes('iran') ||
+							n.title.toLowerCase().includes('tehran') ||
+							n.title.toLowerCase().includes('irgc')
+					)}
+				/>
+			</div>
+		{/if}
+
 			<!-- Placeholder panels for additional data sources -->
 			{#if isPanelVisible('whales')}
 				<div class="panel-slot">

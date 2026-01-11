@@ -4,7 +4,7 @@ export interface Hotspot {
 	name: string;
 	lat: number;
 	lon: number;
-	level: 'high' | 'elevated' | 'low';
+	level: 'critical' | 'high' | 'elevated' | 'low';
 	desc: string;
 }
 
@@ -49,6 +49,7 @@ export interface Ocean {
 }
 
 export const THREAT_COLORS = {
+	critical: '#ff0000',
 	high: '#ff4444',
 	elevated: '#ffcc00',
 	low: '#00ff88'
@@ -105,8 +106,8 @@ export const HOTSPOTS: Hotspot[] = [
 		name: 'Tehran',
 		lat: 35.7,
 		lon: 51.4,
-		level: 'high',
-		desc: 'Tehran — Iran nuclear program, proxy conflicts, regional escalation'
+		level: 'critical',
+		desc: 'Tehran — ACTIVE UPRISING: 200+ cities, 26 provinces. Revolution protests, regime instability, nuclear program'
 	},
 	{
 		name: 'Tel Aviv',
